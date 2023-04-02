@@ -13,6 +13,7 @@ public class Main {
 //             System.out.println(c);
 //         }
         Arrays.sort(cc);
+        System.out.println("Hình có diện tích và chu vi lớn hơn: ");
         System.out.println(cc[0].toString() + " " + "Area " + cc[0].getArea() + " " + "Perimeter = " + cc[0].getPerimeter());
     }
 }
