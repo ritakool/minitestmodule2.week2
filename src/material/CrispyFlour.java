@@ -21,7 +21,7 @@ public class CrispyFlour extends Material{
 
     @Override
     public String toString() {
-        return "CrispyFlour {ID= " + getId() + "name= " + getName() + "manufacturingDate= " + getManufacturingDate() + "quantity= " + getQuantity() + "}";
+        return "CrispyFlour {ID='" + getId() + "' name='" + getName() + "' manufacturingDate='" + getManufacturingDate() + "' quantity='" + getQuantity() + "'}";
     }
     @Override
     public double getAmount() {

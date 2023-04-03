@@ -21,7 +21,7 @@ public class Meat extends Material {
 
     @Override
     public String toString() {
-        return "Meat {ID= " + getId() + "name= " + getName() + "manufacturingDate= " + getManufacturingDate() + "weight= " + getWeight() + "}";
+        return "Meat {ID='" + getId() + "' name='" + getName() + "' manufacturingDate='" + getManufacturingDate() + "' weight='" + getWeight() + "'}";
     }
 
     @Override

@@ -15,19 +15,28 @@ public class MaterialManagement implements Discount{
     public void addArray(Material material) {
         this.materials.add(material);
     }
-    public void outputMaterial (Material material) {
+    public void outputMaterial () {
         for (Material m: materials) {
             System.out.println(m);
         }
     }
-    public void updateMaterial(Material material) {
-        int index = materials.indexOf(material);
-        if (index != -1){
-            materials.set(index, material);
+    public void updateMaterial(String id,Material material) {
+        int index = -1;
+        for (Material m : materials) {
+            if (m.getId().equals(id)) {
+                index = materials.indexOf(m);
+                break;
+            }
         }
+            materials.set(index, material);
     }
-    public void deleteMaterial(Material material) {
-        materials.remove(material);
+    public void deleteMaterial(String id) {
+        for (Material m: materials) {
+            if ( m.getId().equals(id)){
+                materials.remove(m);
+                break;
+            }
+        }
     }
 
     @Override
@@ -35,7 +44,7 @@ public class MaterialManagement implements Discount{
         double amount = material.getAmount();
         double realmoney = 0;
         if (material instanceof CrispyFlour){
-            LocalDate aboutDays = material.getExpiryDate();
+            LocalDate aboutDays = ((CrispyFlour)material).getExpiryDate();
             Period period = Period.between(LocalDate.now(), aboutDays);
             int month = (int) period.getMonths() + 12 * period.getYears();
             if (month >= 4){
@@ -46,7 +55,7 @@ public class MaterialManagement implements Discount{
                 realmoney = amount * 0.6;
             }
         } else if (material instanceof Meat) {
-            LocalDate aboutDays = material.getExpiryDate();
+            LocalDate aboutDays = ((Meat)material).getExpiryDate();
             Period period = Period.between(LocalDate.now(), aboutDays);
             int Day = (int) period.getDays();
             if (Day >= 5) {
@@ -56,5 +65,12 @@ public class MaterialManagement implements Discount{
             }
         }
         return realmoney;
+    }
+    public void Summ() {
+        double sum = 0;
+        for (Material material : materials){
+            sum += getRealMoney(material);
+        }
+        System.out.println("sum");
     }
 }
